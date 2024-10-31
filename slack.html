@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slack - Where Work Happens</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            line-height: 1.5;
+            color: #1D1C1D;
+        }
+.myDiv {
+ 
+  text-align: center;
+
+}
+.myDiv2 {
+ 
+  text-align: left;
+
+}
+
+        /* Navigation Styles */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            box-shadow: 0 0px 0px rgba(0,0,0,0.1);
+            z-index: 500;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+           
+		 background-image: url("slack-salesforce-logo-nav-black.png");
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #454245;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #1264A3;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+.nav-buttons1 {
+            
+            text-align: center;
+ margin-top: 3%;
+        }
+
+
+        .btn {
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background: #611f69;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #4a1751;
+        }
+
+        .btn-secondary {
+            color: #611f69;
+            border: 1px solid #611f69;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(97, 31, 105, 0.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 24px 80px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #f1f3f5 100%);
+            text-align: center;
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            line-height: 1.2;
+            color: #611F69;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: #454245;
+            margin-bottom: 32px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 20px 10px;
+            background: white;
+        }
+
+        .features-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+            gap: 5px;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 32px;
+            border-radius: 8px;
+            transition: transform 0.2s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            width: 64px;
+            height: 64px;
+            background: #f4ede4;
+            border-radius: 50%;
+            margin: 0 auto 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .feature-icon svg {
+            width: 32px;
+            height: 32px;
+            color: #611f69;
+        }
+
+        .feature-card h3 {
+            font-size: 20px;
+            margin-bottom: 16px;
+            color: #1D1C1D;
+        }
+
+        .feature-card p {
+            color: #616061;
+        }
+
+        /* Stats Section */
+        .stats {
+            background: #611f69;
+            color: white;
+            padding: 80px 24px;
+        }
+
+        .stats-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+
+        .stat-item h4 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .stat-item p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 80px 24px;
+            text-align: center;
+            background: white;
+        }
+
+        .cta-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta h2 {
+            font-size: 36px;
+            margin-bottom: 16px;
+        }
+
+        .cta p {
+            color: #616061;
+            margin-bottom: 32px;
+        }
+
+        /* Footer */
+        .footer {
+            background: #f8f9fa;
+            padding: 64px 24px 32px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 48px;
+        }
+
+        .footer-column h4 {
+            font-size: 16px;
+            margin-bottom: 24px;
+            color: #1D1C1D;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-column ul a {
+            text-decoration: none;
+            color: #616061;
+            transition: color 0.2s;
+        }
+
+        .footer-column ul a:hover {
+            color: #1264A3;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 32px;
+            border-top: 1px solid #ddd;
+            color: #616061;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .nav-buttons {
+                gap: 8px;
+            }
+
+            .btn {
+                padding: 8px 16px;
+            }
+
+            .feature-card {
+                padding: 24px;
+            }
+
+            .stat-item h4 {
+                font-size: 36px;
+            }
+
+            .stat-item p {
+                font-size: 16px;
+            }
+
+            .cta h2 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="" class="logo"><img src="slack-salesforce-logo-nav-black.png"  width="5%" height="5%"></a>
+            <div class="nav-links">
+                <a href="#">Features</a>
+                <a href="#">Solutions</a>
+                <a href="#">Enterprise</a>
+                <a href="#">Resources</a>
+                <a href="#">Pricing</a>
+            </div>
+            <div class="nav-buttons">
+                <a href="#" class="btn btn-secondary">Sign in</a>
+                <a href="#" class="btn btn-primary">Talk to Sales</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <h1>Made for people. Built for productivity</h1>
+           
+        </div>
+    </section>
+      <div class="nav-buttons1">
+                <a href="#" class="btn btn-primary">GET STARTED</a>
+                <a href="#" class="btn btn-secondary">Find YourPlan</a>
+            </div>
+
+</div>
+    <!-- Features Section -->
+    <section class="features">
+        <div class="features-grid">
+            <div class="feature-card">
+                 <img src="logo-airbnb-small.png"  >
+                
+            </div>
+            <div class="feature-card">
+               <img src="logo-etsy-small.png">
+                         
+            </div>
+            <div class="feature-card">
+                <img src="logo-nasa-small.png">
+            </div>
+ <div class="feature-card">
+                <img src="logo-nyt-small.png">
+            </div>
+
+ <div class="feature-card">
+                <img src="logo-uber-small.png">
+            </div>
+
+
+        </div>
+    </section>
+
+<div class="myDiv">
+           <video width="60%" height="30%" align:"center" controls>
+                 <source src="Team discussing work in the Slack app.webm" type="video/mp4">
+ 
+           </video>
+</div>
+<div class="myDiv">
+<table style="width:80%">
+<tr>
+<td>
+<video width="60%" height="60%" align:"center" controls>
+  <source src="speed.IN.webm" type="video/mp4">
+ 
+</video>
+</td>
+<td>
+<h1>Move faster with your tools in one place</h1>
+
+<p>Automate away routine tasks with the power of generative AI and simplify your workflow with all your favourite apps ready to go in Slack.</p>
+
+<p>Learn more about the Slack platform -></p>
+</td> </tr>
+</table>
+</div>
+
+
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <h4>10M+</h4>
+                <p>Daily Active Users</p>
+            </div>
+            <div class="stat-item">
+                <h4>85%</h4>
+                <p>Fortune 100 Companies</p>
+            </div>
+            <div class="stat-item">
+                <h4>150+</h4>
+                <p>Countries</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="cta-container">
+            <h2>Try Slack with your team today</h2>
+            <p>Easy to start, impossible to outgrow</p>
+            <a href="#" class="btn btn-primary">Get started for free</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>Why Slack?</h4>
+                    <ul>
+                        <li><a href="#">About us</a></li>
+                        <li><a href="#">Customers</a></li>
+                        <li><a href="#">Security</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Features</h4>
+                    <ul>
+                        <li><a href="#">Features</a></li>
+                        <li><a href="#">Integrations</a></li>
+                        <li><a href="#">Enterprise</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Partners</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">Jobs</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Legal</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Slack. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
